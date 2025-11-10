@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Cá Nhân - Nguyễn Hải Anh</title>
+    <style>
+        html {
+            scroll-behavior: smooth; /* Hiệu ứng cuộn mượt mà */
+        }
+        body {
+            font-family: 'Poppins', sans-serif; /* Font hiện đại hơn */
+            margin: 0;
+            background-color: #0d1117; /* Nền tối (Dark Mode) */
+            color: #c9d1d9; /* Màu chữ sáng */
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #161b22;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #30a7d7;
+        }
+        
+        h1 {
+            color: #30a7d7; /* Màu xanh nổi bật */
+            font-size: 3em;
+            margin: 0;
+            /* Hiệu ứng chữ nổi bật */
+            animation: fadeInDown 1s ease-out; 
+        }
+
+        h2 {
+            color: #8b949e;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            border-bottom: 1px solid #21262d;
+            opacity: 0; /* Khởi tạo ẩn để tạo hiệu ứng */
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1; /* Hiển thị khi người dùng cuộn tới */
+            transform: translateY(0);
+        }
+
+        .section h3 {
+            color: #30a7d7;
+            border-left: 4px solid #30a7d7;
+            padding-left: 15px;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .skills-list li {
+            background-color: #30a7d7;
+            color: #0d1117;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            /* Hiệu ứng di chuột (hover) */
+            transition: transform 0.2s; 
+        }
+
+        .skills-list li:hover {
+            transform: scale(1.05);
+            background-color: #248fc2;
+        }
+
+        /* Định nghĩa hiệu ứng động */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>NGUYỄN HẢI ANH</h1>
+        <h2>SINH VIÊN IT | DEVELOPER CÓ KINH NGHIỆM</h2>
+    </div>
+
+    <section id="about" class="section">
+        <h3>Về Bản Thân 📝</h3>
+        <p>Sinh năm <strong>2006</strong>, hiện là sinh viên ngành Công nghệ thông tin. Tôi có kinh nghiệm vững chắc với lập trình **C** và đang mở rộng kiến thức sang các ngôn ngữ/công nghệ web hiện đại.</p>
+        <p>Tôi tin vào việc học tập không ngừng và áp dụng kiến thức để giải quyết các vấn đề thực tế.</p>
+    </section>
+
+    <section id="goals" class="section">
+        <h3>Mục Tiêu Phát Triển 🎯</h3>
+        <ul>
+            <li>**Nghiên cứu khoa học:** Đặt nền tảng vững chắc trong thuật toán và cấu trúc dữ liệu để tham gia các dự án nghiên cứu chuyên sâu.</li>
+            <li>**Lập trình sản phẩm:** Tập trung phát triển các ứng dụng/phần mềm giúp người dùng **sử dụng hiệu quả và nhanh chóng**, tương tự như tốc độ và tính tức thời của các nền tảng giao tiếp lớn (ví dụ: Messenger).</li>
+            <li>**Full-stack Development:** Nắm vững cả Front-end (UI/UX) và Back-end (Server/Database) để tự xây dựng các sản phẩm hoàn chỉnh.</li>
+        </ul>
+    </section>
+
+    <section id="skills" class="section">
+        <h3>Kỹ Năng Cốt Lõi 💻</h3>
+        <ul class="skills-list">
+            <li>C Programming (Vững chắc)</li>
+            <li>HTML5 & CSS3</li>
+            <li>Thuật toán & Cấu trúc dữ liệu</li>
+            <li>Problem Solving</li>
+            <li>Git & GitHub</li>
+        </ul>
+    </section>
+
+    <footer class="header">
+        <p style="font-size: 0.9em;">&copy; 2023 Nguyễn Hải Anh. Designed with modern CSS.</p>
+    </footer>
+    
+    <script>
+        // Lấy tất cả các phần (section) cần tạo hiệu ứng
+        const sections = document.querySelectorAll('.section');
+
+        // Hàm kiểm tra xem phần tử có nằm trong tầm nhìn (viewport) không
+        const checkVisibility = () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                // Nếu phần tử cách đỉnh màn hình ít hơn 80% chiều cao màn hình
+                if (sectionTop < window.innerHeight * 0.8) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible'); // Có thể bỏ dòng này nếu không muốn hiệu ứng lặp lại
+                }
+            });
+        };
+
+        // Gắn hàm kiểm tra vào sự kiện cuộn
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Chạy lần đầu tiên để kiểm tra các section đã nằm sẵn trong viewport
+        checkVisibility(); 
+    </script>
+</body>
+</html>
